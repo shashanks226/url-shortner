@@ -1,9 +1,11 @@
 import express from "express";
 import path from "path";
-import urlRoute from "./routes/url.js";
 import URL from "./models/url.js";
 import connectToMongoDB from "./connect.js";
-import staticRoute from "./routes/staticRouter.js"
+
+import urlRoute from "./routes/url.js";
+import staticRoute from "./routes/staticRouter.js";
+import userRoute from "./routes/user.js"
 
 const app = express();
 
@@ -19,6 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false})); 
 
 app.use("/url", urlRoute);
+app.use("/user", userRoute);
 app.use("/", staticRoute);
 
 
